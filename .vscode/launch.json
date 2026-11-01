@@ -1,0 +1,44 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "01 - 离线演示聊天（不调用 API）",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "wechat_chatbot",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["--mode", "demo"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "env": { "PYTHONUTF8": "1" }
+    },
+    {
+      "name": "02 - 单条演示消息（练习断点）",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "wechat_chatbot",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["--mode", "demo", "--message", "我想做一个微信聊天机器人。"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "env": { "PYTHONUTF8": "1" }
+    },
+    {
+      "name": "03 - DeepSeek 真实聊天（需要填写密钥）",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "wechat_chatbot",
+      "python": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["--mode", "deepseek"],
+      "cwd": "${workspaceFolder}",
+      "console": "integratedTerminal",
+      "justMyCode": true,
+      "envFile": "${workspaceFolder}/.env",
+      "env": { "PYTHONUTF8": "1" }
+    }
+  ]
+}

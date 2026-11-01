@@ -1,0 +1,50 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "同步依赖：uv sync",
+      "type": "process",
+      "command": "D:\\DevTools\\uv\\uv.exe",
+      "args": ["sync", "--frozen"],
+      "options": {
+        "cwd": "${workspaceFolder}",
+        "env": {
+          "UV_PYTHON_INSTALL_DIR": "D:\\DevTools\\Python",
+          "UV_CACHE_DIR": "D:\\DevTools\\cache\\uv"
+        }
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "检查：Ruff",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["-m", "ruff", "check", "."],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "检查：代码格式",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["-m", "ruff", "format", "--check", "."],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "测试：pytest",
+      "type": "process",
+      "command": "${workspaceFolder}/.venv/Scripts/python.exe",
+      "args": ["-m", "pytest", "-q"],
+      "options": { "cwd": "${workspaceFolder}" },
+      "problemMatcher": []
+    },
+    {
+      "label": "验证全部",
+      "dependsOn": ["检查：Ruff", "检查：代码格式", "测试：pytest"],
+      "dependsOrder": "sequence",
+      "problemMatcher": [],
+      "group": { "kind": "build", "isDefault": true }
+    }
+  ]
+}
